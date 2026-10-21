@@ -1,7 +1,6 @@
 package com.biolab.ecommerce.service;
 
 import com.biolab.ecommerce.DTOs.UsuarioDTO;
-import com.biolab.ecommerce.entities.Produto;
 import com.biolab.ecommerce.entities.Usuario;
 import com.biolab.ecommerce.entities.enums.Role;
 import com.biolab.ecommerce.repositories.UsuarioRepository;
