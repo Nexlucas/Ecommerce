@@ -23,7 +23,7 @@ public class Usuario {
     private String email;
     @Column(length = 20)
     private String telefone;
-    @NotBlank @Size(min = 6, max = 20)
+    @NotBlank @Size( max = 20)
     private String senha;
     @Enumerated(EnumType.STRING)
     private Role roles;

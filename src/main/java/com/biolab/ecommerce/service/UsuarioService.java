@@ -4,6 +4,7 @@ import com.biolab.ecommerce.DTOs.UsuarioDTO;
 import com.biolab.ecommerce.entities.Usuario;
 import com.biolab.ecommerce.entities.enums.Role;
 import com.biolab.ecommerce.repositories.UsuarioRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,18 +12,21 @@ import java.util.List;
 @Service
 public class UsuarioService {
     private final UsuarioRepository repo;
+    private final PasswordEncoder passwordEncoder;
 
-    public UsuarioService(UsuarioRepository repo) {
+
+    public UsuarioService(UsuarioRepository repo, PasswordEncoder passwordEncoder) {
         this.repo = repo;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public String criar(UsuarioDTO u) {
         Usuario usuario = new Usuario();
         usuario.setEmail(u.getEmail());
         usuario.setNome(u.getNome());
-        usuario.setSenha(u.getSenha());
+        usuario.setSenha(passwordEncoder.encode(u.getSenha()));
         usuario.setTelefone(u.getTelefone());
-        usuario.setRoles(Role.USER);
+        usuario.setRoles(u.getRoles());
         repo.save(usuario);
         return "Usuario criado com sucesso";
     }
