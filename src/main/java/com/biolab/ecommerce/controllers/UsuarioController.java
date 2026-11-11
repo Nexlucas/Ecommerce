@@ -2,6 +2,7 @@ package com.biolab.ecommerce.controllers;
 
 import com.biolab.ecommerce.DTOs.UsuarioDTO;
 import com.biolab.ecommerce.service.UsuarioService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class UsuarioController {
 
 
     @PostMapping
-    public ResponseEntity<?> saveUser(@RequestBody UsuarioDTO dto) {
+    public ResponseEntity<?> saveUser(@Valid @RequestBody UsuarioDTO dto) {
         return ResponseEntity.ok(service.criar(dto));
     }
 

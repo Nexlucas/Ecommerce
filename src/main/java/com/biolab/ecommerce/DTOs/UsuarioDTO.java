@@ -22,7 +22,6 @@ public class UsuarioDTO {
     private String email;
     @Size(max = 20, message = "O maximo são 20 caracteres")
     private String telefone;
-    @NotBlank @Size(min = 6, max = 20)
     private String senha;
     private Role roles;
 
